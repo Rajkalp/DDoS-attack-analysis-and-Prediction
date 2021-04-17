@@ -43,3 +43,33 @@ print(X.columns)
 print(df.shape)
 print(X.shape)
 print(Y.shape)
+
+from sklearn.tree import DecisionTreeClassifier
+model=DecisionTreeClassifier(max_depth=5,random_state=10)
+model.fit(X_train, y_train)
+
+# print(y_test)
+# print(x_test)
+
+
+y_pred = model.predict(X_test)
+print(y_pred)
+
+print(label.inverse_transform(y_pred))
+
+from sklearn.metrics import accuracy_score
+accuracy = accuracy_score(y_test, y_pred)
+print("accuracy:",accuracy)
+
+from sklearn.metrics import f1_score
+f1_score(y_test, y_pred)
+
+
+import pickle
+import boto3
+
+s3_resource = boto3.resource('s3')
+bucket='finalproject25'
+key= 'final_model.pkl'
+pickle_byte_obj = pickle.dumps(model)
+s3_resource.Object(bucket,key).put(Body=pickle_byte_obj)
