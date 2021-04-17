@@ -65,3 +65,14 @@ from sklearn.metrics import f1_score
 f1_score(y_test, y_pred)
 
 
+<<<<<<< HEAD
+=======
+import pickle
+import boto3
+
+s3_resource = boto3.resource('s3')
+bucket='finalproject25'
+key= 'final_model.pkl'
+pickle_byte_obj = pickle.dumps(model)
+s3_resource.Object(bucket,key).put(Body=pickle_byte_obj)
+>>>>>>> f5f2ded3edade28ccd454634e42c78e089026c7c
