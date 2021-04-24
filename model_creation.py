@@ -62,14 +62,30 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 print(y_pred)
 
-print(label.inverse_transform(y_pred))
-
 from sklearn.metrics import accuracy_score
 accuracy = accuracy_score(y_test, y_pred)
 print("accuracy:",accuracy)
 
 from sklearn.metrics import f1_score
-f1_score(y_test, y_pred)
+f1score=f1_score(y_test, y_pred, pos_label='ddos')
+print("f1-acore:",f1score)
+
+from sklearn.metrics import confusion_matrix
+cm=confusion_matrix(y_test, y_pred)
+print("confusion matrix:\n",cm)
+
+from sklearn.metrics import precision_score
+pr=precision_score(y_test,y_pred, pos_label = 'ddos')
+print("Precision:",pr)
+
+from sklearn.metrics import recall_score
+rs=recall_score(y_test,y_pred, pos_label = 'ddos')
+print("Recall_score:",rs)
+
+sum(y_test == 'Benign')
+
+sum(y_test == "ddos")
+
 
 
 <<<<<<< HEAD
