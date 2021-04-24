@@ -44,8 +44,8 @@ print(df.shape)
 print(X.shape)
 print(Y.shape)
 
-from sklearn.tree import DecisionTreeClassifier
-model=DecisionTreeClassifier(max_depth=5,random_state=10)
+from sklearn.linear_model import LogisticRegression
+model=LogisticRegression()
 model.fit(X_train, y_train)
 
 # print(y_test)
